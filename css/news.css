@@ -1,0 +1,36 @@
+
+ .tab {
+	 width: 60%;
+	 color: white;
+	 overflow: hidden;
+}
+ .tab>h4 {
+	 display: flex;
+	 justify-content: space-between;
+	 padding: 1em;
+	 background: rgb(197,18,48);
+	 font-weight: bold;
+	 cursor: pointer;
+}
+ .tab>h4:hover {
+	 background: black;
+}
+ .tab>h4::after {
+	 content: "\276F";
+	 width: 1em;
+	 height: 1em;
+	 text-align: center;
+	 transition: all 0.35s;
+}
+ .tab ul {
+	 max-height: 0;
+	 padding: 0 1em;
+	 color: white;
+	 background: rgb(38,59,87);
+	 transition: all 0.35s;
+}
+
+ .tab ul.open {
+	 max-height: 100vh;
+	 padding: 1em;
+}

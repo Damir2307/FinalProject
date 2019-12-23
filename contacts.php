@@ -1,5 +1,37 @@
 <!DOCTYPE html>
-<?php session_start();  ?>
+<?php session_start(); 
+$nameErr = "";
+$emailErr ="";
+$name ="";
+$email  = "";
+ $comment = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["name"])) {
+    $nameErr = "Name is required";
+  } else {
+    $name = t($_POST["name"]);
+  }
+  
+  if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+  } else {
+    $email = t($_POST["email"]);
+  }
+   
+
+  if (empty($_POST["comment"])) {
+    $comment = "";
+  } else {
+    $comment = t($_POST["comment"]);
+  }
+}
+function t($d) {
+  $d = trim($d);
+  $d = stripslashes($d);
+  $d = htmlspecialchars($d);
+  return $data;
+} ?>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -8,6 +40,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Bitter|Comfortaa|Kanit&display=swap" rel="stylesheet">
 	<script src="js/j1.js" defer></script>
 	<script src="js/s.js" defer></script>
+	<style type="text/css">.err{color: red;}</style>
 </head>
 <body>
 	<div id="line"></div>
@@ -38,6 +71,22 @@
 	</div>
 	<div id="karta">
 	<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1SHnXwO9Og8Wcn-uDvKMmF1BujNZH_24L" width="380" height="240"></iframe></div>
+	<div style="margin-left: 12%;">
+	<h2>Comment</h2>
+<form method="post" action="">  
+  Name: <input type="text" name="name">
+  <span class="err">* <?php echo $nameErr;?></span>
+  <br><br>
+  Email: <input type="text" name="email">
+  <span class="err">* <?php echo $emailErr;?></span>
+  <br><br>
+  Comment: <textarea name="comment" rows="5" cols="40"></textarea>
+  <br><br>
+  <br><br>
+  <input type="submit" name="submit" value="Submit">  
+</form>
+</div>
+
 	<h4 id="partners">PARTNERS</h4>
 	<div id="part">
 		<img src="img/11.png">
@@ -45,7 +94,6 @@
 		<img src="img/33.png">
 		<img src="img/44.png">
 	</div>
-
 
 
 
